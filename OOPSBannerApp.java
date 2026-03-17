@@ -1,33 +1,40 @@
 /**
-* OOPSBannerApp UC5 – Render OOPS as Banner using Inline Array Initialization
+* OOPSBannerApp UC6 – OOPS Banner Application (Use Case 6)
 *
-* This use case extends UC4 by defining and populating the String array in a more
-* concise way at the time of declaration using String.join() method to create each
-* line of the banner. This further enhances code readability and maintainability.
+* This use case extends UC5 by implementing a modular approach to generate each
+* letter's pattern through dedicated methods. This enhances code reusability and
+* maintainability by separating pattern generation logic from the main display logic.
 *
 * @author Tanvi Gupta
-* @version 5.0
+* @version 6.0
 */
 
-// Extend the user story 4 to further develop the OOPS Banner Application by
-// not only using String arrays to hold banner lines and printing them in a
-// loop. But also by defining and populating the array in a more concise way
-// at the time of declaration using String.join() method to create each line
-// of the banner.
-
+// Extend the User Story 5 to display the OOPS banner using a modular approach...
+// Key Requirements:...
+// Hint:...
 public class OOPSBannerApp 
 {
+    public static String[] getOPattern()
+    {
+        return new String [] {
+            "   ***   "," **   ** ","**     **","**     **","**     **"," **   ** ","   ***   "};
+    }
+    public static String[] getPPattern()
+    {
+        return new String [] {
+            " ** **  "," **   **"," **   **", " ** **  "," **     "," **     "," **     "};
+    }
+    public static String[] getSPattern()
+    {
+        return new String [] {
+            "   ***** "," **      ","**       ","  *****  ","      ** "," **   **","  ***** "};
+    }
     public static void main(String[] args) 
     {
-        String line[] = {
-        String.join(" ","   ***   " ,"   " ,"   ***   " , "   " , " ** **  " , "   " , "   ***** ")
-        ,String.join(" "," **   ** " , "   " , " **   ** " , "   " , " **   **" , "   " , " **      ")
-        ,String.join(" ","**     **" , "   " , "**     **" , "   " , " **   **" , "   " , "**       ")
-        ,String.join(" ","**     **" , "   " , "**     **" , "   " , " ** **  " , "   " , "  *****  ")
-        ,String.join(" ","**     **" , "   " , "**     **" , "   " , " **     " , "   " , "      ** ")
-        ,String.join(" "," **   ** " , "   " , " **   ** " , "   " , " **     " , "   " , " **   **")
-        ,String.join(" ","   ***   " , "   " , "   ***   " , "   " , " **     " , "   " , "  ***** ") };
-        for(int i=0;i<=6;i++)
-            System.err.println(line[i]);
+        String[] opattern = getOPattern();
+        String[] ppattern = getPPattern();
+        String[] spattern = getSPattern();
+        for(int i=0;i<opattern.length;i++)
+            System.err.println(opattern[i] + " "+ opattern[i]+" " + ppattern[i]+ " "+ spattern[i] );
     }
 }
