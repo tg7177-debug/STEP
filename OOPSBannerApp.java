@@ -1,40 +1,79 @@
 /**
-* OOPSBannerApp UC6 – OOPS Banner Application (Use Case 6)
-*
-* This use case extends UC5 by implementing a modular approach to generate each
-* letter's pattern through dedicated methods. This enhances code reusability and
-* maintainability by separating pattern generation logic from the main display logic.
-*
-* @author Tanvi Gupta
-* @version 6.0
-*/
+ * OOPSBannerApp UC7 – Store Character Pattern in a Class
+ *
+ * This use case extends UC6 by implementing a CharacterPatternMap class
+ * to encapsulate character-to-pattern mappings.
+ *
+ * @author Developer
+ * @version 7.0
+ */
 
-// Extend the User Story 5 to display the OOPS banner using a modular approach...
-// Key Requirements:...
-// Hint:...
-public class OOPSBannerApp 
-{
-    public static String[] getOPattern()
-    {
-        return new String [] {
-            "   ***   "," **   ** ","**     **","**     **","**     **"," **   ** ","   ***   "};
+public class OOPSBannerApp {
+
+    // Inner Class to store character and its pattern
+    static class CharacterPatternMap {
+
+        private char character;
+        private String[] pattern;
+
+        public CharacterPatternMap(char character, String[] pattern) {
+            this.character = character;
+            this.pattern = pattern;
+        }
+
+        public char getCharacter() {
+            return character;
+        }
+
+        public String[] getPattern() {
+            return pattern;
+        }
     }
-    public static String[] getPPattern()
-    {
-        return new String [] {
-            " ** **  "," **   **"," **   **", " ** **  "," **     "," **     "," **     "};
-    }
-    public static String[] getSPattern()
-    {
-        return new String [] {
-            "   ***** "," **      ","**       ","  *****  ","      ** "," **   **","  ***** "};
-    }
-    public static void main(String[] args) 
-    {
-        String[] opattern = getOPattern();
-        String[] ppattern = getPPattern();
-        String[] spattern = getSPattern();
-        for(int i=0;i<opattern.length;i++)
-            System.err.println(opattern[i] + " "+ opattern[i]+" " + ppattern[i]+ " "+ spattern[i] );
+
+    public static void main(String[] args) {
+
+        // Create pattern objects for O, P, and S
+
+        CharacterPatternMap oPattern = new CharacterPatternMap('O', new String[]{
+                " ***** ",
+                "*     *",
+                "*     *",
+                "*     *",
+                " ***** "
+        });
+
+        CharacterPatternMap pPattern = new CharacterPatternMap('P', new String[]{
+                " ***** ",
+                "*     *",
+                " ***** ",
+                "*      ",
+                "*      "
+        });
+
+        CharacterPatternMap sPattern = new CharacterPatternMap('S', new String[]{
+                " ***** ",
+                "*      ",
+                " ***** ",
+                "      *",
+                " ***** "
+        });
+
+        // Display "OOPS"
+        String word = "OOPS";
+
+        for (int i = 0; i < oPattern.getPattern().length; i++) {
+
+            for (char ch : word.toCharArray()) {
+
+                if (ch == 'O') {
+                    System.out.print(oPattern.getPattern()[i] + "  ");
+                } else if (ch == 'P') {
+                    System.out.print(pPattern.getPattern()[i] + "  ");
+                } else if (ch == 'S') {
+                    System.out.print(sPattern.getPattern()[i] + "  ");
+                }
+            }
+            System.out.println();
+        }
     }
 }
